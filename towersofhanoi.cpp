@@ -79,7 +79,7 @@
 	    ofstream movesFile;
 	    movesFile.open("moves.txt");
 	    //loop n from 1 to 10 as number of disks
-	    for(n =1; n < 4; n++){
+	    for(n =1; n < 10; n++){
 	        startCount=n;
 	        H(n, aux1, aux2, aux3, currentCount, startCount, moves, movesFile);
 	        movesFile<<"Number of total moves: " << moves<<endl;
