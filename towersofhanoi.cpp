@@ -12,7 +12,7 @@
 	 start: current number of disks on the start peg
 	 movesFile: output file stream
 	 */
-	void H(int n, char aux1, char aux2, char aux3, int& current, int& start, int&moves, ofstream & movesFile);
+	
 	
 	void newDisk(int n, int& current, int& start, int& moves, ofstream & movesFile)
 	{
