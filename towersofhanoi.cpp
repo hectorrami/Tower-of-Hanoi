@@ -1,92 +1,130 @@
-	
-	
-	#include <iostream>
-	#include <stack>
-	#include <fstream>
-	using namespace std;
-	/*
-	 newDisk function gets a disk from the start peg and places it on peg 1
-	 updates values of current, start, and moves
-	 n: disk that is being moved
-	 current: current number of disks on the auxillary pegs
-	 start: current number of disks on the start peg
-	 movesFile: output file stream
-	 */
-	
-	
-	void newDisk(int n, int& current, int& start, int& moves, ofstream & movesFile)
-	{
-	    if(start>0 && n>current){
-	        movesFile<< "Disk "<< n<<" moves from start to aux1"<<endl;
-	        current++;
-	        start--;
-	        moves++;
-	    }
-	}
-	/*
-	 outDisk function places a disk on the dest peg from peg 3
-	 updates values of current and moves
-	 */
-	void outDisk(int n, int& current, int start, int& moves, ofstream & movesFile){
-	    if(start==0 && n==current){
-	        movesFile<< "Disk " << n <<" moves from aux3 to dest"<<endl;
-	        current--;
-	        moves++;
-	    }
-	}
-	
-	/*
-	 H is a recursive function that also calls inDisk, and outDisk to insert and
-	 remove disks to and from the auxillary pegs.
-	 */
-	
-	void H(int n, char aux1, char aux2, char aux3, int& current, int& start, int&moves, ofstream &movesFile) {
-	    if (n == 1) {
-	        newDisk(n, current, start, moves, movesFile);
-	        movesFile<< "Disk " << n << " moves from aux" << aux1 << " to aux" << aux2 << endl;
-	        movesFile<< "Disk " << n << " moves from aux" << aux2 << " to aux" << aux3 << endl;
-	        moves = moves + 2;
-	        if (start == 0 && current == 1){
-	            movesFile<< "Disk " << n << " moves from aux" << aux3 << " to dest" << endl;
-	            moves++; }
-	    }
-	    if(n >=2) {
-	        H(n-1,aux1,aux2,aux3,current, start,moves,movesFile);
-	        newDisk(n, current, start, moves, movesFile);
-	        movesFile<< "Disk " << n << " moves from aux" << aux1 << " to aux" << aux2 << endl;
-	        moves++;
-	        H(n-1,aux3,aux1,aux2,current,start,moves,movesFile);
-	        movesFile<< "Disk "<< n << " moves from aux" << aux2 << " to aux" << aux3 << endl;
-	        moves++;
-	        outDisk(n, current,start,moves,movesFile);
-	        H(n-1,aux1,aux2,aux3,current, start,moves,movesFile);
-	    }
-	}
-	
-	/*
-	 main function calls H for n=1,2,3,4,5,6,7,8,9,10
-	 */
-	int main(int argc, const char * argv[]) {
-	    
-	    int n;
-	    int startCount;
-	    int currentCount=0;
-	    int moves=0;
-	    //char variables to represent pegs
-	    char aux1='1';
-	    char aux2='2';
-	    char aux3='3';
-	    ofstream movesFile;
-	    movesFile.open("moves.txt");
-	    //loop n from 1 to 10 as number of disks
-	    for(n =1; n < 10; n++){
-	        startCount=n;
-	        H(n, aux1, aux2, aux3, currentCount, startCount, moves, movesFile);
-	        movesFile<<"Number of total moves: " << moves<<endl;
-	        moves=0;
-	        startCount=0;
-	        currentCount=0;
-	        movesFile<<endl;
-	    }
-	    return 0;
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Hanoi{
+public:
+    Hanoi();
+    void StartToDest(string s, string A1, string A2, string A3, string d, int n);
+    void StartToA3(string s, string A1, string A2, string A3, int n); //this one
+    void twoHops(string A1, string A2, string A3, int n);
+    void oneHop(string A1, string A2, string A3, int n);
+    void A1ToDest(string A1, string A2, string A3, string d, int n); //this one
+    int count;
+    void move(string from, string to, int n);
+};
+
+
+int main(){
+    
+    int disks = 0;
+    cout << "Enter number of disks: ";
+    cin >> disks;
+    
+    Hanoi obj;
+    
+    obj.StartToDest("Start", "A1", "A2", "A3", "Dest", disks);
+    cin.ignore();
+    cin.get();
+    
+    return 0;
 }
+
+Hanoi::Hanoi(){
+    count = 0;
+}
+
+void Hanoi::StartToDest(string s, string A1, string A2, string A3, string d, int n)//move from start to dest using start
+{
+    if (n == 1)//move n to dest
+    {
+        move(s, A1,n);
+        move(A1, A2,n);
+        move(A2, A3,n);
+        move(A3, d,n);
+    }
+    else if (n >= 2)
+    {
+        StartToA3(s, A1, A2, A3, n - 1); //move n-1 to A3 using start, ignore dest
+        move(s, A1,n);
+        move(A1, A2,n);//move n to A2
+        oneHop(A3, A1, A2, n - 1); //move n-1 to A1, ignore start and dest
+        move(A2, A3,n);//move n to dest
+        move(A3, d,n);
+        A1ToDest(A1, A2, A3, d, n - 1);//move n-1 from A1 to dest, ignore start
+    }
+}
+
+void Hanoi::oneHop(string A1, string A2, string A3, int n){
+    if(n==1){
+        move(A1,A2,n);
+    }
+    else if(n >=2){
+        twoHops(A1,A2,A3,n-1);
+        move(A1,A2,n);
+        twoHops(A3,A1,A2,n-1);
+    }
+}
+
+void Hanoi::twoHops(string A1, string A2, string A3, int n) //moves n-1 to A1, ignoring start and dest
+{
+    if (n == 1)
+    {
+        move(A1, A2,n);
+        move(A2, A3,n);
+    }
+    else if (n >= 2)
+    {
+        twoHops(A1, A2, A3, n - 1);//move n-1 to A2
+        move(A1, A2,n);
+        oneHop(A3, A1, A2, n - 1);//move n-1 from A3 to A1
+        move(A2, A3,n);
+        twoHops(A1, A2, A3, n - 1);//move n-1 from A1 to A3
+    }
+    
+}
+
+void Hanoi::StartToA3(string s, string A1, string A2, string A3, int n){
+    if(n ==1 ){
+        move(s,A1,n);
+        move(A1,A2,n);
+        move(A2,A3,n);
+    }
+    else if(n>=2){
+        StartToA3(s, A1,A2, A3,n-1);
+        move(s,A1,n);
+        move(A1,A2,n);
+        oneHop(A3,A1,A2,n-1);
+        move(A2,A3,n);
+        twoHops(A1,A2,A3,n-1);
+    }
+    
+}
+
+void Hanoi::A1ToDest(string A1, string A2, string A3, string d, int n){
+    if(n==1){
+        move(A1,A2,n);
+        move(A2,A3,n);
+        move(A3,d,n);
+    }
+    else if(n>=2){
+        twoHops(A1,A2,A3,n-1);
+        move(A1,A2,n);
+        oneHop(A3,A1,A2,n-1);
+        move(A2,A3,n);
+        move(A3,d,n);
+        A1ToDest(A1,A2,A3,d,n-1);
+      
+    }
+    
+}
+
+void Hanoi::move(string from, string to,int n)
+{
+    count++;
+    cout << "Move " << count << ": " << "Move disk " << n << " from "  << from << " to " << to << endl;
+}
+
+
+
+
