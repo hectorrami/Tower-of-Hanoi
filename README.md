@@ -1,4 +1,4 @@
-# Towers of Hanoi 
+# Tower of Hanoi 
 
 ## Problem
 Solve the Towers of Hanoi game for the following graph G=(V,E) with V={Start, Aux1,Aux2, Aux3,Dest} 
