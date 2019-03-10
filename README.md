@@ -18,7 +18,25 @@ n is a number between 1 and 10, inclusive. Disks can only move to adjacent pegs.
 #### Time and Space Complexity
 The time complexity would be derived from the number of recursive calls. For this algorithm there are 3 recursive calls so r =3 and d =1 because when n =1 disk 1 moves from the start to dest peg (base case).Using Master Theorem for time complexity:The time complexity for this F(n) = 3n/1 algorithm is O(3n).
 The space complexity is O(n) because the recursive shifts are independent of each n (constant). The space complexity would then be linear.
- 
+
+#### Output
+
+The output for n=10 (10 disks) consists of 24,979 moves to complete the puzzle
+Here are the last ten (the complete list can be found on file output.txt)
+
+Move 24970: Move disk 3 from Aux3 to Dest
+Move 24971: Move disk 1 from Aux1 to Aux2
+Move 24972: Move disk 1 from Aux2 to Aux3
+Move 24973: Move disk 2 from Aux1 to Aux2
+Move 24974: Move disk 1 from Aux3 to Aux1
+Move 24975: Move disk 2 from Aux2 to Aux3
+Move 24976: Move disk 2 from Aux3 to Dest
+Move 24977: Move disk 1 from Aux1 to Aux2
+Move 24978: Move disk 1 from Aux2 to Aux3
+Move 24979: Move disk 1 from Aux3 to Dest
+
+
+
 ## Reference 
 The concepts behind this implementation are best explained in this video:
 https://www.youtube.com/watch?v=bFC9yB26Xrw
