@@ -7,3 +7,7 @@ and E ={(Start,Aux1), (Aux1,Aux2), (Aux2,Aux3), (Aux3,Aux1),(Aux3,Dest)}.
 * Design an algorithm and determine the time and space complexities of moving n disks form Start to Dest.
 
 * Implement this algorithm whereby your program prints out each of the moves of every disk. Show the output for n=1,2,...10.
+
+## Reference 
+This video provides you with the main idea:
+https://www.youtube.com/watch?v=bFC9yB26Xrw
