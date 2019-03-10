@@ -20,5 +20,5 @@ The time complexity would be derived from the number of recursive calls. For thi
 The space complexity is O(n) because the recursive shifts are independent of each n (constant). The space complexity would then be linear.
  
 ## Reference 
-The concepts of this implementation are best explained in this video:
+The concepts behind this implementation are best explained in this video:
 https://www.youtube.com/watch?v=bFC9yB26Xrw
