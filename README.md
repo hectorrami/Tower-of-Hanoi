@@ -24,16 +24,16 @@ The space complexity is O(n) because the recursive shifts are independent of eac
 The output for n=10 (10 disks) consists of 24,979 moves to complete the puzzle
 Here are the last ten (the complete list can be found on file output.txt)
 
-Move 24970: Move disk 3 from Aux3 to Dest
-Move 24971: Move disk 1 from Aux1 to Aux2
-Move 24972: Move disk 1 from Aux2 to Aux3
-Move 24973: Move disk 2 from Aux1 to Aux2
-Move 24974: Move disk 1 from Aux3 to Aux1
-Move 24975: Move disk 2 from Aux2 to Aux3
-Move 24976: Move disk 2 from Aux3 to Dest
-Move 24977: Move disk 1 from Aux1 to Aux2
-Move 24978: Move disk 1 from Aux2 to Aux3
-Move 24979: Move disk 1 from Aux3 to Dest
+* Move 24970: Move disk 3 from Aux3 to Dest
+* Move 24971: Move disk 1 from Aux1 to Aux2
+* Move 24972: Move disk 1 from Aux2 to Aux3
+* Move 24973: Move disk 2 from Aux1 to Aux2
+* Move 24974: Move disk 1 from Aux3 to Aux1
+* Move 24975: Move disk 2 from Aux2 to Aux3
+* Move 24976: Move disk 2 from Aux3 to Dest
+* Move 24977: Move disk 1 from Aux1 to Aux2
+* Move 24978: Move disk 1 from Aux2 to Aux3
+* Move 24979: Move disk 1 from Aux3 to Dest
 
 
 
