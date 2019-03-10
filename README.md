@@ -1,6 +1,6 @@
 # Towers of Hanoi for Algorithms and Data Structures COSC3320 
 
-## Problem:
+## Problem
 Solve the Towers of Hanoi game for the following graph G=(V,E) with V= {Start, Aux1, Aux2, Aux3, Dest} 
 and E ={(Start,Aux1), (Aux1,Aux2), (Aux2,Aux3), (Aux3,Aux1),(Aux3,Dest)}.
 
