@@ -14,22 +14,6 @@ public:
     void move(string from, string to, int n);
 };
 
-
-int main(){
-    
-    int disks = 0;
-    cout << "Enter number of disks: ";
-    cin >> disks;
-    
-    Hanoi obj;
-    
-    obj.StartToDest("Start", "A1", "A2", "A3", "Dest", disks);
-    cin.ignore();
-    cin.get();
-    
-    return 0;
-}
-
 Hanoi::Hanoi(){
     count = 0;
 }
@@ -125,6 +109,19 @@ void Hanoi::move(string from, string to,int n)
     cout << "Move " << count << ": " << "Move disk " << n << " from "  << from << " to " << to << endl;
 }
 
-
+int main(){
+    
+    int disks = 0;
+    cout << "Enter number of disks: ";
+    cin >> disks;
+    
+    Hanoi obj;
+    
+    obj.StartToDest("Start", "A1", "A2", "A3", "Dest", disks);
+    cin.ignore();
+    cin.get();
+    
+    return 0;
+}
 
 
