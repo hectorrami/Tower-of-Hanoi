@@ -38,5 +38,5 @@ Here are the last ten (the complete list can be found on file output.txt)
 
 
 ## Reference 
-The concepts behind this implementation are best explained in this video:
-https://www.youtube.com/watch?v=bFC9yB26Xrw
+The concepts behind this implementation are best explained in this 
+[YouTube video](https://www.youtube.com/watch?v=bFC9yB26Xrw)
